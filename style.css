@@ -1,0 +1,518 @@
+:root {
+  --Marineblue: hsl(213, 96%, 18%);
+  --Purplishblue: hsl(243, 100%, 62%);
+  --Pastelblue: hsl(228, 100%, 84%);
+  --Lightblue: hsl(206, 94%, 87%);
+  --Strawberryred: hsl(354, 84%, 57%);
+  --Coolgray: hsl(231, 11%, 63%);
+  --Lightgray: hsl(229, 24%, 87%);
+  --Magnolia: hsl(217, 100%, 97%);
+  --Alabaster: hsl(231, 100%, 99%);
+  --White: hsl(0, 0%, 100%);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  background-color: var(--Magnolia);
+  font-family: 'Ubuntu', sans-serif;
+}
+
+main {
+  background-color: var(--White);
+  padding: 15px;
+  border-radius: 15px;
+  display: flex;
+}
+
+.sideBar {
+  height: 560px;
+  background-image: url(assets/images/bg-sidebar-desktop.svg);
+  background-repeat: no-repeat;
+  color: var(--Alabaster);
+  text-transform: uppercase;
+  padding: 15px 20px;
+  border-radius: 7px;
+  width: 250px;
+  user-select: none;
+}
+
+.sideBar>div {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.sideBar .circle {
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  width: 36px;
+  aspect-ratio: 1;
+  border: 1px solid var(--Lightgray);
+  font-weight: bold;
+  transition: .2s;
+}
+
+.sideBar .circle.active {
+  color: var(--Marineblue);
+  background-color: var(--Lightblue);
+}
+
+.sideBar .info span {
+  color: var(--Pastelblue);
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.sideBar .info h4 {
+  font-weight: 500;
+  margin-top: 3px;
+  font-size: 15px;
+}
+
+.step {
+  width: 500px;
+  color: var(--Marineblue);
+  margin: 40px 80px 10px;
+  position: relative;
+}
+
+.step>p {
+  color: var(--Coolgray);
+  margin-block: 10px 40px;
+}
+
+.step-1 label {
+  display: block;
+  margin-block: 25px 8px;
+  font-weight: 500;
+  font-size: 15px;
+  position: relative;
+}
+
+.step-1 input {
+  border: 1px solid var(--Lightgray);
+  outline: none;
+  font-weight: 700;
+  color: var(--Marineblue);
+  width: 100%;
+  border-radius: 6px;
+  padding: 12.5px 10px;
+  font-size: 15px;
+}
+
+.step-1 input:hover {
+  border-color: var(--Purplishblue);
+}
+
+.step-1 input::placeholder {
+  color: var(--Coolgray);
+}
+
+.step-1 label.empty::after{
+  content: "This field is required";
+  color: var(--Strawberryred);
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+}
+
+.step-1 label.invalid::after {
+  content: "Please write a valid " attr(data-type);
+  color: var(--Strawberryred);
+  font-weight: bold;
+  font-size: 14px;
+  position: absolute;
+  right: 0;
+}
+
+.step-1 label.empty + input , .step-1 label.invalid+input{
+  border-color: var(--Strawberryred);
+}
+
+.nav {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  bottom: 15px;
+  color: var(--Alabaster);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-1 .nav {
+  justify-content: flex-end;
+}
+
+.nav .next {
+  border-radius: 6px;
+  cursor: pointer;
+  padding: 12px 20px;
+  background-color: var(--Marineblue);
+}
+
+.nav .back {
+  color: var(--Coolgray);
+  cursor: pointer;
+}
+
+.step-2 .plans {
+  display: flex;
+  gap: 15px;
+  width: 100%;
+  justify-content: space-between;
+  position: relative;
+}
+
+.step-2.notchoosen .plans::before{
+  content: 'Please choose a plan';
+    color: var(--Strawberryred);
+    font-weight: bold;
+    font-size: 14px;
+    position: absolute;
+    top: -25px;
+    right: 0;
+}
+
+.step-2 input,
+.step-3 input {
+  appearance: none;
+}
+
+.step-2 .plans label {
+  display: block;
+  width: 32%;
+  border: 1px solid var(--Lightgray);
+  border-radius: 8px;
+  padding: 15px;
+  cursor: pointer;
+  transition: .1s;
+}
+
+.step-2 .plans p {
+  font-size: 12px;
+  font-weight: 500;
+  margin-top: 5px;
+  display: none;
+}
+
+.step-2 .plans label:hover {
+  border-color: var(--Purplishblue);
+}
+
+.step-2 .plans label:has(input:checked) {
+  border-color: var(--Purplishblue);
+  background-color: hsla(206, 94%, 87%, 0.173);
+}
+
+.step-2 .plans h4 {
+  margin-block: 45px 5px;
+}
+
+.step-2 .plans span {
+  color: var(--Coolgray);
+  font-size: 15px;
+}
+
+.step-2 .period {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+  padding: 15px;
+  margin-top: 20px;
+  background-color: hsla(206, 94%, 87%, 0.154);
+  font-weight: bold;
+  border-radius: 8px;
+}
+
+.step-2 .period input {
+  width: 50px;
+  height: 24px;
+  border-radius: 25px;
+  background-color: var(--Marineblue);
+  position: relative;
+  cursor: pointer;
+}
+
+.step-2 .period input::before {
+  content: "";
+  display: block;
+  width: 16px;
+  aspect-ratio: 1;
+  position: absolute;
+  top: 50%;
+  left: 25%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background-color: var(--Alabaster);
+  transition: .15s;
+}
+
+.step-2 .period input:checked::before {
+  left: 74%;
+}
+
+.step-3 label {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 15px;
+  padding: 20px;
+  border: 1px solid var(--Lightgray);
+  border-radius: 6px;
+  cursor: pointer;
+  gap: 20px;
+  transition: .1s;
+}
+
+.step-3 label span {
+  font-weight: bold;
+}
+
+.step-3 label p {
+  margin-top: 2px;
+  font-size: 14px;
+  color: var(--Coolgray);
+}
+
+.step-3 .check {
+  width: 22px;
+  aspect-ratio: 1;
+  border: 1px solid var(--Lightgray);
+  border-radius: 4px;
+  display: grid;
+  place-items: center;
+  transition: .1s;
+}
+
+.step-3 .price {
+  color: var(--Purplishblue);
+  margin-left: auto;
+}
+
+.step-3 label:hover {
+  border-color: var(--Purplishblue);
+}
+
+.step-3 label:has(input:checked) {
+  border-color: var(--Purplishblue);
+  background-color: hsla(206, 94%, 87%, 0.173);
+}
+
+.step-3 label:has(input:checked) .check {
+  background-color: var(--Purplishblue);
+  border: none;
+}
+
+.step-3 label:has(input:checked) .check::before {
+  content: url(assets/images/icon-checkmark.svg);
+}
+
+.step-4 .charges {
+  background-color: hsla(206, 94%, 87%, 0.154);
+  padding: 20px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 15px;
+}
+
+.step-4 .plan,
+.step-4 .addOns>div,
+.step-4 .total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.step-4 .plan {
+  font-weight: bold;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--Lightgray);
+}
+
+.step-4 .change {
+  color: var(--Coolgray);
+  text-decoration: underline;
+  font-weight: 400;
+  display: block;
+  margin-top: 3px;
+  cursor: pointer;
+}
+
+.step-4 .addOns>div {
+  margin-top: 18px;
+}
+
+.step-4 .total {
+  padding-inline: 20px;
+  color: var(--Coolgray);
+  font-size: 15px;
+}
+
+.step-4 .total .price {
+  color: var(--Purplishblue);
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.step-4 .nav .next {
+  background-color: var(--Purplishblue);
+}
+
+.step-5 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 10px;
+}
+
+.step-2,
+.step-3,
+.step-5,
+.step-4 {
+  display: none;
+}
+
+@media screen and (max-width:991px) {
+  .step {
+    width: 440px;
+    margin: 20px 30px 10px;
+  }
+
+  .sideBar {
+    width: 220px
+  }
+}
+
+@media screen and (max-width:768px) {
+  main {
+    flex-direction: column;
+  }
+
+  .sideBar {
+    background-image: none;
+    display: flex;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    gap: 15px;
+    position: relative;
+    z-index: 1000;
+    overflow: hidden;
+    padding-block: 20px;
+  }
+
+  .sideBar .info {
+    display: none;
+  }
+
+  .sideBar>div {
+    margin: 0;
+    position: relative;
+  }
+
+  .sideBar::before {
+    position: absolute;
+    content: url(assets/images/bg-sidebar-desktop.svg);
+    rotate: 90deg;
+    bottom: -316px;
+    left: 119px;
+  }
+
+  .step {
+    padding-bottom: 75px;
+    margin-bottom: 0;
+  }
+
+  .nav {
+    bottom: 0;
+  }
+}
+
+@media screen and (max-width:540px) {
+  .sideBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    height: 170px;
+    align-items: flex-start;
+    padding-top: 30px;
+  }
+
+  .sideBar::before {
+    position: absolute;
+    content: url(assets/images/bg-sidebar-desktop.svg);
+    rotate: 90deg;
+    bottom: -215px;
+    left: 127px;
+  }
+
+  main {
+    background-color: transparent;
+    height: 410px;
+  }
+
+  .step {
+    position: relative;
+    z-index: 999999;
+    background-color: white;
+    margin: 0;
+    transform: translateY(-50px);
+    padding: 14px;
+    border-radius: 8px;
+    width: calc(100vw - 30px);
+  }
+
+  .step>p {
+    margin-bottom: 25px;
+  }
+
+  .step h1 {
+    font-size: 28px;
+  }
+
+  .step-3 label {
+    gap: 10px;
+    font-size: 15px;
+    padding: 10px;
+  }
+
+  .step-1 label {
+    margin-top: 20px;
+  }
+
+  .step-2 .plans label {
+    padding: 10px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .step-2 .plans label h4 {
+    margin-top: 0;
+  }
+
+  .step-2 .plans {
+    gap: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+}
